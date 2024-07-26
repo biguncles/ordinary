@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: ordinary
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:db/ordinary.db

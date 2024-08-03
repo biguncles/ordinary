@@ -1,9 +1,10 @@
 package com.biguncles.ordinary.login;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-@TableName("user")
+import javax.persistence.Table;
+
+@Table(name = "user")
 @Data
 public class UserEntity {
     /**

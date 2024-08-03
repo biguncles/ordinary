@@ -30,9 +30,8 @@ public class ServerStartListener {
     public void serverStart(ServerStartEvent event) {
         Assert.notNull(portStr, "error: server.port is null");
         List<String> ip = NetworkUtil.getLocalInetAddressList();
-        log.info("IP获取结果 {}", ip);
+        log.info("local ip address {}", ip);
         Assert.notEmpty(ip, "error: localIpAddress is empty");
         serverService.registerServer(ip, portStr);
-
     }
 }

@@ -25,12 +25,4 @@ public interface ServerListRepository extends JpaRepository<ServerPO, Integer> {
      * @return 匹配的 ServerStatus 实体
      */
     ServerPO findByUuid(String uuid);
-
-    /**
-     * 根据给定的服务器信息更新服务器状态
-     *
-     * @param serverPO 包含要更新的服务器信息的ServerPO对象
-     * @return 更新操作影响的行数
-     */
-    int updateStatusById(ServerPO serverPO);
 }

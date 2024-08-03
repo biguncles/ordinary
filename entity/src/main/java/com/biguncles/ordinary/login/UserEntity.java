@@ -1,8 +1,8 @@
 package com.biguncles.ordinary.login;
 
+import jakarta.persistence.Table;
 import lombok.Data;
 
-import javax.persistence.Table;
 
 @Table(name = "user")
 @Data

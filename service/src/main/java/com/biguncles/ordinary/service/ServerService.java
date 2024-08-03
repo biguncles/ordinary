@@ -46,7 +46,7 @@ public class ServerService {
 
         if (serverPO.getStatus() == ServerPO.Status.OFFLINE) {
             serverPO.setStatus(ServerPO.Status.ONLINE);
-            serverListRepository.updateStatusById(serverPO);
+            //serverListRepository.updateStatusById(serverPO.getId(), serverPO.getStatus());
             log.info("Register server status to ONLINE : {}", serverPO);
             return;
         }

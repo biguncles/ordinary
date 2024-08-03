@@ -2,5 +2,17 @@ spring:
   application:
     name: ordinary
   datasource:
-    driver-class-name: org.sqlite.JDBC
-    url: jdbc:sqlite:db/ordinary.db
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ordinary?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 471555786
+  jpa:
+    hibernate:
+      # 设置为create-drop会在启动时删除并重新创建表结构
+      # 设置为update则保留表结构并更新
+      ddl-auto: update
+    properties:
+      # Hibernate特定的属性
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+      hibernate.show_sql: true
+      hibernate.format_sql: true

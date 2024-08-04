@@ -47,7 +47,7 @@ public class ServerPO {
     /**
      * 最后一次更新时间，自动更新为当前时间。
      */
-    @Column(name = "last_updated", nullable = false, insertable = false)
+    @Column(name = "last_updated", nullable = false)
     private Date lastUpdated;
 
     /**

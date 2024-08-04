@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 定义日志文件的存储位置以及文件轮转策略 -->
+    <property name="LOGS_DIR" value="./logs"/>
+    <property name="MAX_HISTORY" value="30"/>
+    <property name="MAX_FILE_SIZE" value="10MB"/>
+    <property name="TOTAL_MAX_SIZE" value="100MB"/>
+    <property name="PATTERN_LAYOUT" value="%d{yyyy-MM-dd HH:mm:ss} - %msg%n"/>
+
+    <!-- 控制台输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${PATTERN_LAYOUT}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 文件输出，用于归档日志文件 -->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/your-app-name.log</file>
+        <encoder>
+            <pattern>${PATTERN_LAYOUT}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 日志文件名格式 -->
+            <fileNamePattern>${LOGS_DIR}/your-app-name-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- 日志文件最大历史 -->
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+            <!-- 日志文件最大大小 -->
+            <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            <!-- 日志文件总大小 -->
+            <totalSizeCap>${TOTAL_MAX_SIZE}</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Spring Boot 默认的日志级别 -->
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
+
+    <!-- 针对特定包或类设置日志级别 -->
+    <logger name="com.biguncles.ordinary" level="DEBUG"/>
+
+</configuration>

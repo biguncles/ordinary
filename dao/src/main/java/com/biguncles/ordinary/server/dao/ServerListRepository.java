@@ -1,4 +1,4 @@
-package com.biguncles.ordinary.dao.server;
+package com.biguncles.ordinary.server.dao;
 
 import com.biguncles.ordinary.server.po.ServerPO;
 import org.springframework.data.jpa.repository.JpaRepository;

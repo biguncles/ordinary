@@ -1,6 +1,6 @@
 package com.biguncles.ordinary.service;
 
-import com.biguncles.ordinary.dao.server.ServerListRepository;
+import com.biguncles.ordinary.server.dao.ServerListRepository;
 import com.biguncles.ordinary.server.po.ServerPO;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +35,7 @@ public class ServerService {
         if (serverPO == null) {
             serverPO = new ServerPO();
             serverPO.setIpAddress(ip);
+            serverPO.setPort(port);
             if (!ipList.isEmpty()) {
                 serverPO.setCandidateIpAddress(Arrays.toString(ipList.toArray()));
             }
@@ -47,6 +48,7 @@ public class ServerService {
         if (serverPO.getStatus() == ServerPO.Status.OFFLINE) {
             serverPO.setStatus(ServerPO.Status.ONLINE);
             //serverListRepository.updateStatusById(serverPO.getId(), serverPO.getStatus());
+            serverListRepository.save(serverPO);
             log.info("Register server status to ONLINE : {}", serverPO);
             return;
         }
